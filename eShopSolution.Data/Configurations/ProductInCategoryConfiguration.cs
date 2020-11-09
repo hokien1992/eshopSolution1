@@ -7,16 +7,19 @@ using System.Text;
 
 namespace eShopSolution.Data.Configurations
 {
-	public class ProductInCategoryConfiguration : IEntityTypeConfiguration<ProductInCategory>
-	{
-		public void Configure(EntityTypeBuilder<ProductInCategory> builder)
-		{
-			builder.ToTable("ProductIncategories");
-			builder.HasKey(x => new { x.ProductId, x.CategoryId });
-			builder.HasOne(x => x.Product).WithMany(pc => pc.ProductInCategories)
-				.HasForeignKey(pId=>pId.ProductId);
-			builder.HasOne(x => x.Category).WithMany(pc => pc.ProductIncategories)
-				.HasForeignKey(cId => cId.CategoryId);
-		}
-	}
+    public class ProductInCategoryConfiguration : IEntityTypeConfiguration<ProductInCategory>
+    {
+        public void Configure(EntityTypeBuilder<ProductInCategory> builder)
+        {
+            builder.HasKey(t => new {t.CategoryId, t.ProductId });
+
+            builder.ToTable("ProductInCategories");
+
+            builder.HasOne(t => t.Product).WithMany(pc => pc.ProductInCategories)
+                .HasForeignKey(pc=>pc.ProductId);
+
+            builder.HasOne(t => t.Category).WithMany(pc => pc.ProductInCategories)
+              .HasForeignKey(pc => pc.CategoryId);
+        }
+    }
 }
