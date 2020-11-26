@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eShopSolution.Data.EF;
 
 namespace eShopSolution.Data.Migrations
 {
     [DbContext(typeof(EShopDbContext))]
-    partial class EShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201127002955_AspNetCoreIdentityDatabase")]
+    partial class AspNetCoreIdentityDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -482,7 +484,7 @@ namespace eShopSolution.Data.Migrations
                     b.Property<DateTime>("OrderDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2020, 11, 26, 16, 14, 4, 488, DateTimeKind.Local).AddTicks(1849));
+                        .HasDefaultValue(new DateTime(2020, 11, 26, 16, 29, 54, 845, DateTimeKind.Local).AddTicks(3924));
 
                     b.Property<string>("ShipAddress")
                         .IsRequired()
@@ -578,7 +580,7 @@ namespace eShopSolution.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2020, 11, 26, 16, 14, 4, 509, DateTimeKind.Local).AddTicks(3643),
+                            DateCreated = new DateTime(2020, 11, 26, 16, 29, 54, 867, DateTimeKind.Local).AddTicks(3379),
                             OriginalPrice = 100000m,
                             Price = 200000m,
                             Stock = 0,
