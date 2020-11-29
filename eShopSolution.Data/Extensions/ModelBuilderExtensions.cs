@@ -91,8 +91,8 @@ namespace eShopSolution.Data.Extensions
             modelBuilder.Entity<AppRole>().HasData(new AppRole
             {
                 Id = roleId,
-                Name = "admin",
-                NormalizedName = "admin",
+                Name = "admin123",
+                NormalizedName = "admin123",
                 Description = "Administrator role"
             });
 
@@ -100,10 +100,10 @@ namespace eShopSolution.Data.Extensions
             modelBuilder.Entity<AppUser>().HasData(new AppUser
             {
                 Id = adminId,
-                UserName = "admin",
-                NormalizedUserName = "admin",
-                Email = "tedu.international@gmail.com",
-                NormalizedEmail = "tedu.international@gmail.com",
+                UserName = "admin123",
+                NormalizedUserName = "admin123",
+                Email = "hokien1992@gmail.com",
+                NormalizedEmail = "hokien1992@gmail.com",
                 EmailConfirmed = true,
                 PasswordHash = hasher.HashPassword(null, "Abcd1234$"),
                 SecurityStamp = string.Empty,
