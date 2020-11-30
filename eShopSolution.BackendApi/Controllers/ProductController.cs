@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using eShopSolution.Application.Catelog.Products;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,14 @@ namespace eShopSolution.BackendApi.Controllers
 	[ApiController]
 	public class ProductController : ControllerBase
 	{
+		private readonly IPublicProductService _publicProductService;
+		public ProductController(IPublicProductService publicProductService) {
+			_publicProductService = publicProductService;
+		}
 		[HttpGet]
-		public async Task<IActionResult> Get()
-		{
-			return Ok("Test");
+		public async Task<IActionResult> Get() {
+			var products = await _publicProductService.GetAll();
+			return Ok(products);
 		}
 	}
 }
