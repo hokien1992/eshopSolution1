@@ -87,10 +87,5 @@ namespace eShopSolution.Application.Catelog.Products
             };
             return pagedResult;
         }
-
-		public Task<PagedResult<ProductViewModel>> GetAllByCategoryId(string languageId, GetPublicProductPagingRequest request)
-		{
-			throw new System.NotImplementedException();
-		}
 	}
 }
