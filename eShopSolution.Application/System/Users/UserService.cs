@@ -2,8 +2,11 @@
 using eShopSolution.ViewModels.System.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,12 +25,12 @@ namespace eShopSolution.Application.System.Users
 			_roleManager = roleManager;
 			_config = config;
 		}
-		public Task<string> Authencate(LoginRequest request)
+		public async Task<string> Authencate(LoginRequest request)
 		{
 			var user = await _userManager.FindByNameAsync(request.UserName);
 			if (user == null) return null;
 
-			var result = await _signInManager.PasswordSignInAsync(user, request.Passwrod, request.RememberMe, true);
+			var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, true);
 			if (!result.Succeeded)
 			{
 				return null;
@@ -51,7 +54,7 @@ namespace eShopSolution.Application.System.Users
 			return new JwtSecurityTokenHandler().WriteToken(token);
 		}
 
-		public Task<bool> Register(RegisterRequest request)
+		public async Task<bool> Register(RegisterRequest request)
 		{
 			var user = new AppUser()
 			{
