@@ -7,8 +7,6 @@ namespace eShopSolution.ViewModels.Catelog.Products
 {
 	public class GetPublicProductPagingRequest : PagingRequestBase
 	{
-		public string Keyword { get; set; }
-		public List<int> CategoryIds { get; set; }
 		public int? CategoryId { get; set; }
 	}
 }
