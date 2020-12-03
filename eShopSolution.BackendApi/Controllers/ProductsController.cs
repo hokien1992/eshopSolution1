@@ -1,6 +1,7 @@
 ﻿using eShopSolution.Application.Catelog.Products;
 using eShopSolution.ViewModels.Catelog.ProductImages;
 using eShopSolution.ViewModels.Catelog.Products;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,6 +13,7 @@ namespace eShopSolution.BackendApi.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
+	[Authorize]
 	public class ProductsController : ControllerBase
 	{
 		private readonly IPublicProductService _publicProductService;
@@ -22,7 +24,8 @@ namespace eShopSolution.BackendApi.Controllers
 		}
 		//http://localhost:port/product
 		[HttpGet("{languageId}")]
-		public async Task<IActionResult> GetPaging(string languageId, [FromQuery] GetPublicProductPagingRequest request)
+		
+		public async Task<IActionResult> GetPaging(string languageId, [FromQuery]GetPublicProductPagingRequest request)
 		{
 			var products = await _publicProductService.GetAllByCategoryId(languageId, request);
 			return Ok(products);
@@ -34,7 +37,6 @@ namespace eShopSolution.BackendApi.Controllers
 				return BadRequest("Cannot find product");
 			return Ok(product);
 		}
-
 		// Manage Product
 		[HttpPost]
 		public async Task<IActionResult> Create([FromForm] ProductCreateRequest request)
