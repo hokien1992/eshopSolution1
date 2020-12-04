@@ -56,7 +56,7 @@
                 <a href="index.html" class="navbar-brand">
                     <small>
                         <i class="fa fa-leaf"></i>
-                        Ace Admin
+                        @User.Identity.Name
                     </small>
                 </a>
             </div>
@@ -322,8 +322,8 @@
                         <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                             <img class="nav-user-photo" src="/backend/assets/images/avatars/user.jpg" alt="Jason's Photo" />
                             <span class="user-info">
-                                <small>Welcome,</small>
-                                Jason
+                                <small>Chào mừng,</small>
+                                @User.Identity.Name
                             </span>
 
                             <i class="ace-icon fa fa-caret-down"></i>
@@ -331,26 +331,21 @@
 
                         <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                             <li>
-                                <a href="#">
-                                    <i class="ace-icon fa fa-cog"></i>
-                                    Settings
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="profile.html">
+                                <a href="/Profile/Index">
                                     <i class="ace-icon fa fa-user"></i>
-                                    Profile
+                                    Thông tin các nhân
                                 </a>
                             </li>
 
                             <li class="divider"></li>
 
                             <li>
-                                <a href="#">
-                                    <i class="ace-icon fa fa-power-off"></i>
-                                    Logout
-                                </a>
+                                <form asp-action="Logout" asp-controller="User" method="post">
+                                    <button type="submit" style="border: 0px !important;background: none;text-align: center;border-radius: 0px;display: block;width:100%;">
+                                        <i class="ace-icon fa fa-power-off"></i>
+                                        Đăng xuất
+                                    </button>
+                                </form>
                             </li>
                         </ul>
                     </li>
@@ -1167,4 +1162,3 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
-

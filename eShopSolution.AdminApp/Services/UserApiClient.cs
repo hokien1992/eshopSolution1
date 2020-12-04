@@ -22,7 +22,7 @@ namespace eShopSolution.AdminApp.Services
 
 			var client = _httpClientFactory.CreateClient();
 			client.BaseAddress = new Uri("http://localhost:5000");
-			var response = await client.PostAsync("/api/user/authenticate", httpContent);
+			var response = await client.PostAsync("/api/users/authenticate", httpContent);
 			var token = await response.Content.ReadAsStringAsync();
 			return token;
 		}
