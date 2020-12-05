@@ -3,6 +3,15 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Catelog\Products\Dtos\**" />
+    <Compile Remove="Dtos\**" />
+    <EmbeddedResource Remove="Catelog\Products\Dtos\**" />
+    <EmbeddedResource Remove="Dtos\**" />
+    <None Remove="Catelog\Products\Dtos\**" />
+    <None Remove="Dtos\**" />
+  </ItemGroup>
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
@@ -10,11 +19,6 @@
     <ProjectReference Include="..\eShopSolution.Data\eShopSolution.Data.csproj" />
     <ProjectReference Include="..\eShopSolution.Utilities\eShopSolution.Utilities.csproj" />
     <ProjectReference Include="..\eShopSolution.ViewModels\eShopSolution.ViewModels.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Catelog\Products\Dtos\" />
-    <Folder Include="Dtos\" />
   </ItemGroup>
 
   <ItemGroup>
