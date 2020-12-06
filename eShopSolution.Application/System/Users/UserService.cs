@@ -31,7 +31,7 @@ namespace eShopSolution.Application.System.Users
 		public async Task<ApiResult<string>> Authenticate(LoginRequest request)
 		{
 			var user = await _userManager.FindByNameAsync(request.UserName);
-			if (user == null) return null;
+			if (user == null) return new ApiErrorResult<string>("Tài khoản không tồn tại");
 
 			var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, true);
 			if (!result.Succeeded)
@@ -165,6 +165,19 @@ namespace eShopSolution.Application.System.Users
 				return new ApiSuccessResult<bool>();
 			}
 			return new ApiErrorResult<bool>("Cập nhật không thành công");
+		}
+		public async Task<ApiResult<bool>> Delete(Guid id)
+		{
+			var user = await _userManager.FindByIdAsync(id.ToString());
+			if (user == null)
+			{
+				return new ApiErrorResult<bool>("User không tồn tại");
+			}
+			var reult = await _userManager.DeleteAsync(user);
+			if (reult.Succeeded)
+				return new ApiSuccessResult<bool>();
+
+			return new ApiErrorResult<bool>("Xóa không thành công");
 		}
 	}
 }
