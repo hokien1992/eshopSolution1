@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace eShopSolution.Data.Migrations
 {
-    public partial class ChangeFileLengthType : Migration
+    public partial class database : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -448,7 +448,7 @@ namespace eShopSolution.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AppRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Description", "Name", "NormalizedName" },
-                values: new object[] { new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"), "d852d886-da3a-4bb3-82f4-6ae330dca0a4", "Administrator role", "admin123", "admin123" });
+                values: new object[] { new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"), "d84fe374-1802-4378-b85b-1cc0e1e59948", "Administrator role", "admin123", "admin123" });
 
             migrationBuilder.InsertData(
                 table: "AppUserRoles",
@@ -458,7 +458,7 @@ namespace eShopSolution.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AppUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Dob", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"), 0, "e2db542e-c717-448f-bb70-a3054787dc59", new DateTime(2020, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "hokien1992@gmail.com", true, "Toan", "Bach", false, null, "hokien1992@gmail.com", "admin123", "AQAAAAEAACcQAAAAEEVh2XJSyDTjpXkrS4vPVw/2DHzxNyPO4cPRhFi7+gPgEDKdP25sRd6tIL8Hnc0Grw==", null, false, "", false, "admin123" });
+                values: new object[] { new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"), 0, "c0abc8ea-46b8-459e-a47f-ecbd1737021b", new DateTime(2020, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "hokien1992@gmail.com", true, "Toan", "Bach", false, null, "hokien1992@gmail.com", "admin123", "AQAAAAEAACcQAAAAEHYp+aXYaCygp/ReJb/hu5xwKjNkyQEvu3h+PtLwLoqRjLKgEv7CBRweWupOnZyr7A==", null, false, "", false, "admin123" });
 
             migrationBuilder.InsertData(
                 table: "Categories",
@@ -481,7 +481,7 @@ namespace eShopSolution.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "Id", "DateCreated", "OriginalPrice", "Price", "SeoAlias" },
-                values: new object[] { 1, new DateTime(2020, 11, 28, 11, 13, 11, 835, DateTimeKind.Local).AddTicks(6355), 100000m, 200000m, null });
+                values: new object[] { 1, new DateTime(2020, 12, 7, 15, 4, 46, 73, DateTimeKind.Local).AddTicks(1338), 100000m, 200000m, null });
 
             migrationBuilder.InsertData(
                 table: "CategoryTranslations",
