@@ -1,0 +1,131 @@
+﻿@using eShopSolution.ViewModels.Common;
+@model PagedResult<eShopSolution.ViewModels.Catelog.Products.ProductVm>
+
+@{
+    ViewData["Title"] = "Danh sách sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script>
+        setTimeout(function () {
+            $('#msgAlert').fadeOut('slow');
+        }, 2000);
+    </script>
+}
+<div class="main-content">
+
+    <div class="main-content-inner">
+
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="/">Tổng quan</a>
+                </li>
+                <li class="active">Danh sách sản phẩm</li>
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+        <div class="page-content">
+            <div class="page-header clearfix">
+                <a href="/product/create" class="btn btn-sm btn-info" style="float: right">Thêm mới</a>
+            </div><!-- /.page-header -->
+            <div class="content-search clearfix">
+                <div class="row">
+                    <form asp-action="Index" asp-controller="Product" method="get">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="@ViewBag.Keyword" name="keyword" placeholder="Tên sản phẩm" style="font-size: 12px;" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <select class="form-control" name="categoryId" onchange="this.form.submit()" asp-items="@ViewBag.Categories">
+                                <option>--Chọn danh mục--</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-sm btn-info">Tìm kiếm</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    @if (ViewBag.SuccessMsg != null)
+                    {
+                        <div id="msgAlert" class="alert alert-success" role="alert">
+                            @ViewBag.SuccessMsg
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Mã SP
+                                </th>
+                                <th>
+                                    Tên
+                                </th>
+                                <th>
+                                    Giá nhập
+                                </th>
+                                <th>
+                                    Giá bán
+                                </th>
+                                <th>
+                                    Số lượng tồn
+                                </th>
+
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Items)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OriginalPrice)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Price)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Stock)
+                                    </td>
+
+                                    <td>
+                                        @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
+                                        @Html.ActionLink("Xem", "Details", new { id = item.Id }) |
+                                        @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @await Component.InvokeAsync("Pager", Model)
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->

@@ -8,6 +8,12 @@ namespace eShopSolution.Utilities.Constans
 	{
 		public const string mainConnectionString = "eShopSolutionDb";
 
-		public static string MainConnectionString { get; set; }
+		//public static string MainConnectionString { get; set; }
+		public class AppSettings
+		{
+			public const string DefaultLanguageId = "DefaultLanguageId";
+			public const string Token = "Token";
+			public const string BaseAddress = "BaseAddress";
+		}
 	}
 }

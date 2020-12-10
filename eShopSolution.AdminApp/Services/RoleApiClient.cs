@@ -22,9 +22,9 @@ namespace eShopSolution.AdminApp.Services
                    IHttpContextAccessor httpContextAccessor,
                     IConfiguration configuration)
         {
+            _httpClientFactory = httpClientFactory;
             _configuration = configuration;
             _httpContextAccessor = httpContextAccessor;
-            _httpClientFactory = httpClientFactory;
         }
 
         public async Task<ApiResult<List<RoleVm>>> GetAll()

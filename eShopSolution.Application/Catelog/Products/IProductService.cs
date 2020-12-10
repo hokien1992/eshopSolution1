@@ -16,8 +16,8 @@ namespace eShopSolution.Application.Catelog.Products
 		Task<bool> UpdateStock(int productId, int addedQuantity);
 		Task<ProductViewModel> GetById(int productId, string languageId); 
 		Task AddViewCount(int productId);
-		Task<PagedResult<ProductViewModel>> GetAllPaging(GetManageProductPagingRequest request);
-		Task<PagedResult<ProductViewModel>> GetAllByCategoryId(string languageId, GetManageProductPagingRequest request);
+		Task<PagedResult<ProductVm>> GetAllPaging(GetManageProductPagingRequest request);
+		Task<PagedResult<ProductViewModel>> GetAllByCategoryId(string languageId, GetPublicProductPagingRequest request);
 
 		Task<int> AddImage(int productId, ProductImageCreateRequest request);
 		Task<int> RemoveImage(int imageId);
