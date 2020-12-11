@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <select class="form-control" name="categoryId" onchange="this.form.submit()" asp-items="@ViewBag.Categories">
+                            <select name="categoryId" onchange="this.form.submit()" asp-items="@ViewBag.Categories" class="form-control">
                                 <option>--Chọn danh mục--</option>
                             </select>
                         </div>
@@ -116,7 +116,8 @@
                                     <td>
                                         @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
                                         @Html.ActionLink("Xem", "Details", new { id = item.Id }) |
-                                        @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
+                                        @Html.ActionLink("Xóa", "Delete", new { id = item.Id }) |
+                                        @Html.ActionLink("Gán danh mục", "CategoryAssign", new { id = item.Id })
                                     </td>
                                 </tr>
                             }
