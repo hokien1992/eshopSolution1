@@ -10,6 +10,7 @@ namespace eShopSolution.ViewModels.Catelog.Products
 		public int Id { get; set; }
 		public string Name { set; get; }
 		public string Description { set; get; }
+		public bool? IsFeatured { get; set; }
 		public string Details { set; get; }
 		public string SeoDescription { set; get; }
 		public string SeoTitle { set; get; }
