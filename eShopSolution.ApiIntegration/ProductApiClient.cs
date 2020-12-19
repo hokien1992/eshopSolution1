@@ -7,7 +7,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -16,7 +15,7 @@ using System.Threading.Tasks;
 namespace eShopSolution.ApiIntegration
 {
 	public class ProductApiClient : BaseApiClient, IProductApiClient
-	{
+    {
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IConfiguration _configuration;
@@ -82,6 +81,7 @@ namespace eShopSolution.ApiIntegration
 
             return data;
         }
+
         public async Task<ApiResult<bool>> CategoryAssign(int id, CategoryAssignRequest request)
         {
             var client = _httpClientFactory.CreateClient();
@@ -105,6 +105,12 @@ namespace eShopSolution.ApiIntegration
         {
             var data = await GetAsync<ProductVm>($"/api/products/{id}/{languageId}");
 
+            return data;
+        }
+
+        public async Task<List<ProductVm>> GetFeaturedProducts(string languageId, int take)
+        {
+            var data = await GetListAsync<ProductVm>($"/api/products/featured/{languageId}/{take}");
             return data;
         }
     }

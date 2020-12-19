@@ -1,16 +1,15 @@
+using eShopSolution.ApiIntegration;
 using eShopSolution.WebApp.LocalizationResources;
 using LazZiya.ExpressLocalization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace eShopSolution.WebApp
 {
@@ -26,6 +25,7 @@ namespace eShopSolution.WebApp
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddHttpClient();
 			// add multiple language
 			var cultures = new[]
 			{
@@ -68,6 +68,13 @@ namespace eShopSolution.WebApp
 			{
 				builder.AddRazorRuntimeCompilation();
 			}
+			services.AddSession(options =>
+			{
+				options.IdleTimeout = TimeSpan.FromMinutes(30);
+			});
+			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+			services.AddTransient<ISlideApiClient, SlideApiClient>();
+			services.AddTransient<IProductApiClient, ProductApiClient>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -87,12 +94,15 @@ namespace eShopSolution.WebApp
 
 			app.UseAuthorization();
 
+			app.UseSession();
+
 			app.UseRequestLocalization();
+
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllerRoute(
 					name: "default",
-					pattern: "{culture=en}/{controller=Home}/{action=Index}/{id?}");
+					pattern: "{culture=vi}/{controller=Home}/{action=Index}/{id?}");
 			});
 		}
 	}

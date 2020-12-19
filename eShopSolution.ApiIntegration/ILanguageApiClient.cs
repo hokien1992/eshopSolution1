@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace eShopSolution.ApiIntegration
 {
-	public interface ILanguageApiClient
-	{
-		Task<ApiResult<List<LanguageVm>>> GetAll();
-	}
+    public interface ILanguageApiClient
+    {
+        Task<ApiResult<List<LanguageVm>>> GetAll();
+    }
 }
