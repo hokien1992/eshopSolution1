@@ -117,9 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Categories" xml:space="preserve">
+    <value>Categories</value>
+    <comment>/Home/Index</comment>
+  </data>
+  <data name="CategoryUrl" xml:space="preserve">
+    <value>categories</value>
+    <comment>/Share/Components/ListCategories/Default (using _loc)</comment>
+  </data>
   <data name="My Account" xml:space="preserve">
     <value>My Account</value>
     <comment>/_Layout</comment>
+  </data>
+  <data name="ProductUrl" xml:space="preserve">
+    <value>products</value>
+    <comment>Url</comment>
+  </data>
+  <data name="Recently Viewed Products" xml:space="preserve">
+    <value>Recently Viewed Products</value>
+    <comment>/Home/Index</comment>
   </data>
   <data name="Shopping Cart" xml:space="preserve">
     <value>Shopping Cart</value>

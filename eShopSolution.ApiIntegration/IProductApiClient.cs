@@ -18,5 +18,6 @@ namespace eShopSolution.ApiIntegration
 		Task<ProductVm> GetById(int id, string languageId);
 
 		Task<List<ProductVm>> GetFeaturedProducts(string languageId, int take);
+		Task<List<ProductVm>> GetLastestProducts(string languageId, int take);
 	}
 }

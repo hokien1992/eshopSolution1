@@ -113,5 +113,10 @@ namespace eShopSolution.ApiIntegration
             var data = await GetListAsync<ProductVm>($"/api/products/featured/{languageId}/{take}");
             return data;
         }
+        public async Task<List<ProductVm>> GetLastestProducts(string languageId, int take)
+        {
+            var data = await GetListAsync<ProductVm>($"/api/products/lastest/{languageId}/{take}");
+            return data;
+        }
     }
 }

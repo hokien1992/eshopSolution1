@@ -1,4 +1,5 @@
 ﻿@using System.Globalization
+
 @{
     var culture = CultureInfo.CurrentCulture.Name;
     var stringLang = "";
@@ -8,6 +9,8 @@
     {
         stringLang = "English";
     }
+    string referer = Context.Request.Headers["Referer"].ToString();
+    Uri baseUri = new Uri(referer);
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>@ViewData["Title"]</title>
-
+    <base href="@baseUri" />
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Porto - Bootstrap eCommerce Template">
     <meta name="author" content="SW-THEMES">

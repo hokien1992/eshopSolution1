@@ -40,6 +40,13 @@ namespace eShopSolution.BackendApi.Controllers
 			var products = await _productService.GetFeaturedProducts(languageId, take);
 			return Ok(products);
 		}
+		[HttpGet("lastest/{languageId}/{take}")]
+		[AllowAnonymous]
+		public async Task<IActionResult> GetLastestProducts(int take, string languageId)
+		{
+			var products = await _productService.GetLastestProducts(languageId, take);
+			return Ok(products);
+		}
 		// Manage Product
 		[HttpPost]
 		[Consumes("multipart/form-data")]
