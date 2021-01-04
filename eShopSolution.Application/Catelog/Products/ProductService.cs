@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Http;
 using System.Net.Http.Headers;
 using System.IO;
 using eShopSolution.ViewModels.Catelog.ProductImages;
+using eShopSolution.Utilities.Constans;
 
 namespace eShopSolution.Application.Catelog.Products
 {
@@ -55,6 +56,31 @@ namespace eShopSolution.Application.Catelog.Products
 		}
 		public async Task<int> Create(ProductCreateRequest request)
 		{
+			var languages = _context.Languages;
+			var translations = new List<ProductTranslation>();
+			foreach (var language in languages) {
+				if (language.Id == request.LanguageId) {
+					translations.Add(new ProductTranslation()
+					{
+						Name = request.Name,
+						Description = request.Description,
+						Details = request.Details,
+						SeoDescription = request.SeoDescription,
+						SeoAlias = request.SeoAlias,
+						SeoTitle = request.SeoTitle,
+						LanguageId = request.LanguageId
+					});
+				} else {
+					translations.Add(new ProductTranslation()
+					{
+						Name = SystemConstants.ProductContanst.NA,
+						Description = SystemConstants.ProductContanst.NA,
+						SeoAlias = SystemConstants.ProductContanst.NA,
+						LanguageId = language.Id
+					});
+				}
+				
+			}
 			var product = new Product()
 			{
 				Price = request.Price,
@@ -62,19 +88,7 @@ namespace eShopSolution.Application.Catelog.Products
 				Stock = request.Stock,
 				ViewCount = 0,
 				DateCreated = DateTime.Now,
-				ProductTranslations = new List<ProductTranslation>()
-				{
-					new ProductTranslation()
-					{
-						Name =  request.Name,
-						Description = request.Description,
-						Details = request.Details,
-						SeoDescription = request.SeoDescription,
-						SeoAlias = request.SeoAlias,
-						SeoTitle = request.SeoTitle,
-						LanguageId = request.LanguageId
-					}
-				}
+				ProductTranslations = translations
 			};
 			//Save image
 			if (request.ThumbnailImage != null)
@@ -116,12 +130,13 @@ namespace eShopSolution.Application.Catelog.Products
 		{
 			//1. Select join
 			var query = from p in _context.Products
-						join pt in _context.ProductTranslations on p.Id equals pt.ProductId
+						join pt in _context.ProductTranslations on p.Id equals pt.ProductId //into ppt
+						//from pt in ppt.DefaultIfEmpty()
 						join pic in _context.ProductInCategories on p.Id equals pic.ProductId into ppic
 						from pic in ppic.DefaultIfEmpty()
 						join c in _context.Categories on pic.CategoryId equals c.Id into picc
 						from c in picc.DefaultIfEmpty()
-						where pt.LanguageId == request.LanguageId
+						where pt == null || pt.LanguageId == request.LanguageId
 						select new { p, pt, pic, c };
 			//2. filter
 			if (!string.IsNullOrEmpty(request.Keyword))
