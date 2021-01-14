@@ -30,7 +30,8 @@ namespace eShopSolution.WebApp.Controllers
 			{ 
 				CategoryId = id,
 				PageIndex = page,
-				LanguageId = culture
+				LanguageId = culture,
+				PageSize = 10
 			});
 			return View(new ProductCategoryViewModel() { 
 				Category = await _categoryApiClient.GetById(culture, id),
