@@ -1,0 +1,65 @@
+﻿@model eShopSolution.ViewModels.System.Users.RoleAssignRequest
+
+@{
+    ViewData["Title"] = "Gán quyền";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="main-content">
+
+    <div class="main-content-inner">
+
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="/">Tổng quan</a>
+                </li>
+                <li class="active">Gán quyền</li>
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+        <div class="page-content">
+            <div class="page-header clearfix">
+
+            </div><!-- /.page-header -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <form asp-action="RoleAssign">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="Id" />
+                        @for (var i = 0; i < Model.Roles.Count; i++)
+                        {
+                            <div class="form-group">
+                                <label>
+                                    @Model.Roles[i].Name
+                                    <input type="checkbox" asp-for="Roles[i].Selected" />
+                                    <input type="hidden" asp-for="Roles[i].Id" />
+                                    <input type="hidden" asp-for="Roles[i].Name" />
+                                </label>
+                            </div>
+                        }
+                        <div class="form-group">
+                            <input type="submit" value="Lưu lại" class="btn btn-sm btn-info" />
+                        </div>
+                    </form>
+                    <div>
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->
+
+

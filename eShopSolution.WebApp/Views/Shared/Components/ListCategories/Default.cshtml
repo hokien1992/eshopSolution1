@@ -1,0 +1,40 @@
+﻿@model List<eShopSolution.ViewModels.Catelog.Categories.CategoryVm>
+@inject LazZiya.ExpressLocalization.ISharedCultureLocalizer _loc;
+@{ 
+    var culture = CultureInfo.CurrentCulture.Name;
+    var parents = Model.Where(x => x.ParentId == null);
+}
+<section class="product-category-panel mb-6">
+        <div class="section-title">
+            <h2 localize-content>Categories</h2>
+        </div>
+
+        <div class="product-category-intro owl-carousel owl-theme text-center" data-toggle="owl" data-owl-options="{
+                        'margin': 0,
+                        'items': 2,
+                        'autoplayTimeout': 5000,
+                        'dots': false,
+                        'nav': true,
+                        'responsive': {
+                            '480': {
+                                'items': 3
+                            },
+                            '576': {
+                                'items' : 4;
+                            },
+                            '768': {
+                                'items': 5
+                            },
+                            '992': {
+                                'items' : 6
+                            },
+                            '1200' : {
+                                'items' : 7
+                            }
+                        }
+                    }">
+            @foreach (var parent in parents) {
+                <a href="@culture/@_loc["CategoryUrl"]/@parent.Id"><i class="icon-category-fashion"></i>@parent.Name</a>
+            }
+        </div>
+    </section>
