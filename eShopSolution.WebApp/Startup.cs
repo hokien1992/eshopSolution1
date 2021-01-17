@@ -101,33 +101,33 @@ namespace eShopSolution.WebApp
 
 			app.UseEndpoints(endpoints =>
 			{
+				#region Url Page Detail Product
+				endpoints.MapControllerRoute(
+					name: "Detail Product en",
+					pattern: "{culture}/product/{id}", new
+					{
+						controller = "Product",
+						action = "Detail"
+					});
+				endpoints.MapControllerRoute(
+					name: "Detail Product vi",
+					pattern: "{culture}/{san-pham}/{id}", new
+					{
+						controller = "Product",
+						action = "Detail"
+					});
+				#endregion
 				#region Url List Category Product
 				endpoints.MapControllerRoute(
 					name: "Category en",
-					pattern: "{culture}/{categories}/{id}", new
+					pattern: "{culture}/categories/{id}", new
 					{
 						controller = "Product",
 						action = "Category"
 					});
 				endpoints.MapControllerRoute(
 					name: "Category vi",
-					pattern: "{culture}/{danh-muc}/{id}", new
-					{
-						controller = "Product",
-						action = "Category"
-					});
-				#endregion
-				#region Url Page Detail Product
-				endpoints.MapControllerRoute(
-					name: "Detail Product en",
-					pattern: "{culture}/{products}/{id}", new
-					{
-						controller = "Product",
-						action = "Category"
-					});
-				endpoints.MapControllerRoute(
-					name: "Detail Product vi",
-					pattern: "{culture}/{san-pham}/{id}", new
+					pattern: "{culture}/danh-muc/{id}", new
 					{
 						controller = "Product",
 						action = "Category"

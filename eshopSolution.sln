@@ -28,7 +28,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Hosts", "3. Hosts", "{E1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopSolution.AdminApp", "eShopSolution.AdminApp\eShopSolution.AdminApp.csproj", "{2FFFED40-6738-444D-A973-E513F1A46AF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopSolution.ApiIntegration", "eShopSolution.ApiIntegration\eShopSolution.ApiIntegration.csproj", "{7039BD9D-D36E-4CC5-B810-0069FB78ED44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopSolution.ApiIntegration", "eShopSolution.ApiIntegration\eShopSolution.ApiIntegration.csproj", "{7039BD9D-D36E-4CC5-B810-0069FB78ED44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

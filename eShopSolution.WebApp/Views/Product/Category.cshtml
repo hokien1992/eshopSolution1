@@ -1,8 +1,11 @@
 ﻿@model ProductCategoryViewModel
 @{
+
     ViewData["Title"] = "Category";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var culture = CultureInfo.CurrentCulture.Name;
 }
+@inject LazZiya.ExpressLocalization.ISharedCultureLocalizer _loc;
 @section Scripts{
     <script>
         $(window).on("load", function () {
@@ -73,11 +76,12 @@
                 </nav>
 
                 <div class="row row-sm">
-                    @foreach (var item in Model.Products.Items) { 
+                    @foreach (var item in Model.Products.Items)
+                    {
                         <div class="col-6 col-md-4 col-lg-3">
                             <div class="product-default inner-quickview inner-icon">
                                 <figure>
-                                    <a href="">
+                                    <a href="@culture/@_loc["ProductUrl"]/@item.Id">
                                         <img src="@item.ThumbnailImage">
                                     </a>
                                     <div class="label-group">
@@ -96,7 +100,7 @@
                                         <a href="#" class="btn-icon-wish"><i class="icon-heart"></i></a>
                                     </div>
                                     <h2 class="product-title">
-                                        <a href="product.html">@item.Name</a>
+                                        <a href="@culture/@_loc["ProductUrl"]/@item.Id">@item.Name</a>
                                     </h2>
                                     <div class="ratings-container">
                                         <div class="product-ratings">
@@ -120,7 +124,7 @@
                         <label>Showing 1–9 of 60 results</label>
                     </div><!-- End .toolbox-item -->
 
-                    <ul class="pagination">
+                    @*<ul class="pagination">
                         <li class="page-item disabled">
                             <a class="page-link page-link-btn" href="#"><i class="icon-angle-left"></i></a>
                         </li>
@@ -135,7 +139,7 @@
                         <li class="page-item">
                             <a class="page-link page-link-btn" href="#"><i class="icon-angle-right"></i></a>
                         </li>
-                    </ul>
+                    </ul>*@
                 </nav>
             </div><!-- End .col-lg-9 -->
 

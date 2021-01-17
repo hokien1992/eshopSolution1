@@ -130,7 +130,7 @@
     <comment>/_Layout</comment>
   </data>
   <data name="ProductUrl" xml:space="preserve">
-    <value>products</value>
+    <value>product</value>
     <comment>Url</comment>
   </data>
   <data name="Recently Viewed Products" xml:space="preserve">

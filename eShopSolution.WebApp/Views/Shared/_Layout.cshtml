@@ -1,16 +1,17 @@
 ﻿@using System.Globalization
-
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration;
 @{
     var culture = CultureInfo.CurrentCulture.Name;
     var stringLang = "";
-    if (culture == "vi") {
+    if (culture == "vi")
+    {
         stringLang = "Vietnamese";
-    }else if (culture == "en")
+    }
+    else if (culture == "en")
     {
         stringLang = "English";
     }
-    //string referer = Context.Request.Headers["Referer"].ToString();
-    //Uri baseUri = new Uri(referer);
+    var BaseUrl = Configuration["BaseUrl"];
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>@ViewData["Title"]</title>
-    @*<base href="@baseUri" />*@
+    <base href="@BaseUrl" />
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Porto - Bootstrap eCommerce Template">
     <meta name="author" content="SW-THEMES">
@@ -67,7 +68,7 @@
                         <button class="mobile-menu-toggler" type="button">
                             <i class="icon-menu"></i>
                         </button>
-                        <a href="index.html" class="logo">
+                        <a href="/" class="logo">
                             <img src="/frontend/assets/images/logo.png" alt="Porto Logo">
                         </a>
                     </div><!-- End .header-left -->
@@ -387,7 +388,7 @@
                 <div class="footer-middle">
                     <div class="row row-sm">
                         <div class="col-lg-6 col-xl-4">
-                            <a href="index.html">
+                            <a href="/">
                                 <img src="/frontend/assets/images/logo-black.png" alt="Porto Logo">
                             </a>
                             <div class="row row-sm">
